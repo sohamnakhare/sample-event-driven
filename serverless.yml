@@ -14,3 +14,10 @@ functions:
     handler: handler.handler
     events:
       - httpApi: "*"
+
+resources:
+  Resources:
+    MyS3Bucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: sample-event-driven-bucket
