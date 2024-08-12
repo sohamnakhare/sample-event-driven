@@ -27,6 +27,7 @@ app.post("/push-to-queue", async (req, res, next) => {
   console.log('process.env.SQS_URL: ', process.env.SQS_URL);
   await sqs.sendMessage({
     QueueUrl: process.env.SQS_URL,
+    MessageGroupId: '123',
     MessageBody: JSON.stringify({ message: "Hello from push to queue!" }),
   });
 
