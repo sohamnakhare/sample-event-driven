@@ -14,6 +14,14 @@ functions:
     handler: handler.handler
     events:
       - httpApi: "*"
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - MyQueue
+              - Arn
+    environment:
+      SQS_URL:
+        Ref: MyQueue
 
 resources:
   Resources:
