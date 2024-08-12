@@ -21,3 +21,7 @@ resources:
       Type: "AWS::S3::Bucket"
       Properties:
         BucketName: sample-event-driven-bucket
+    MyQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+      QueueName: sample-event-driven-queue
