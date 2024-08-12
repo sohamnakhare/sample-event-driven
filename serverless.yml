@@ -13,7 +13,7 @@ provider:
       Action:
         - sqs:SendMessage
       Resource:
-        - !GetAtt SampleQueue.Arn
+        - !GetAtt MyQueue.Arn
 
 functions:
   api:
