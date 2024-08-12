@@ -12,8 +12,12 @@ provider:
     - Effect: Allow
       Action:
         - sqs:SendMessage
+        - sqs:ReceiveMessage
+        - sqs:DeleteMessage
+        - sqs:GetQueueAttributes
       Resource:
         - !GetAtt MyQueue.Arn
+        - !GetAtt MyDeadLetterQueue.Arn
 
 functions:
   api:
@@ -28,6 +32,20 @@ functions:
     environment:
       SQS_URL:
         Ref: MyQueue
+
+consumer:
+  handler: consumer.handler
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - MyQueue
+            - Arn
+        batchSize: 10
+        maximumBatchingWindow: 0
+  environment:
+    SQS_URL:
+      Ref: MyQueue
 
 resources:
   Resources:
