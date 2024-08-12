@@ -24,4 +24,20 @@ resources:
     MyQueue:
       Type: "AWS::SQS::Queue"
       Properties:
-      QueueName: sample-event-driven-queue
+        QueueName: sample-event-driven.fifo
+        FifoQueue: true
+        VisibilityTimeout: 540
+        ContentBasedDeduplication: true
+        RedrivePolicy:
+          deadLetterTargetArn:
+            Fn::GetAtt:
+              - MyDeadLetterQueue
+              - Arn
+          maxReceiveCount: 5
+
+    MyDeadLetterQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: sample-event-driven-dlq.fifo
+        FifoQueue: true
+        ContentBasedDeduplication: true
