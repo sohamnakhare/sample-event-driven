@@ -5,8 +5,12 @@ app: sample-event-driven-1
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: sample-event-driven-1
 
+plugins:
+  - serverless-dotenv-plugin
+
 provider:
   name: aws
+  deploymentMethod: changesets
   runtime: nodejs20.x
   iamRoleStatements:
     - Effect: Allow
@@ -52,7 +56,7 @@ resources:
     MyQueue:
       Type: "AWS::SQS::Queue"
       Properties:
-        QueueName: sample-event-driven.fifo
+        QueueName: sample-event-driven-1.fifo
         FifoQueue: true
         VisibilityTimeout: 540
         ContentBasedDeduplication: true
@@ -62,10 +66,9 @@ resources:
               - MyDeadLetterQueue
               - Arn
           maxReceiveCount: 5
-
     MyDeadLetterQueue:
       Type: AWS::SQS::Queue
       Properties:
-        QueueName: sample-event-driven-dlq.fifo
+        QueueName: sample-event-driven-dlq-1.fifo
         FifoQueue: true
         ContentBasedDeduplication: true
