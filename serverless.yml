@@ -15,9 +15,7 @@ provider:
         - sqs:ReceiveMessage
         - sqs:DeleteMessage
         - sqs:GetQueueAttributes
-      Resource:
-        - !GetAtt MyQueue.Arn
-        - !GetAtt MyDeadLetterQueue.Arn
+      Resource: "*"
 
 functions:
   api:
@@ -47,10 +45,10 @@ functions:
 
 resources:
   Resources:
-    # MyS3Bucket:
-    #   Type: "AWS::S3::Bucket"
-    #   Properties:
-    #     BucketName: sample-event-driven-bucket
+    MyS3Bucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: sample-event-driven-bucket-1
     MyQueue:
       Type: "AWS::SQS::Queue"
       Properties:
