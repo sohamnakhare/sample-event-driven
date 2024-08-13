@@ -38,5 +38,6 @@ async function processMessage(message) {
     to: '+918149891546', // Text your number
     from: '+1 256 364 4316', // From a valid Twilio number
   })
-  .then((message) => console.log(message.sid));
+  .then((message) => console.log(message.sid))
+  .catch(err => console.error(err));
 }
