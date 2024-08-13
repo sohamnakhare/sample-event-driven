@@ -24,14 +24,14 @@ functions:
     handler: handler.handler
     events:
       - httpApi: "*"
-      - sqs:
-          arn:
-            Fn::GetAtt:
-              - MyQueue
-              - Arn
-    environment:
-      SQS_URL:
-        Ref: MyQueue
+    #   - sqs:
+    #       arn:
+    #         Fn::GetAtt:
+    #           - MyQueue
+    #           - Arn
+    # environment:
+    #   SQS_URL:
+    #     Ref: MyQueue
   # consumer:
   #   handler: consumer.handler
   #   events:
