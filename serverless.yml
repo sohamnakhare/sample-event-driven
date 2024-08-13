@@ -1,9 +1,9 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: sohamnakhare
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
-app: sample-event-driven-2
+app: sample-event-driven-1
 # "service" is the name of this project. This will also be added to your AWS resource names.
-service: sample-event-driven-2
+service: sample-event-driven-1
 
 provider:
   name: aws
