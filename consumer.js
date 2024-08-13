@@ -1,6 +1,10 @@
+const accountSid = process.env.TWI_ACC_SID;
+const authToken = process.env.TWI_AUTH_TOKEN;
+
+const client = require('twilio')(accountSid, authToken);
+
 exports.handler = async (event) => {
   console.log('Received SQS event:', JSON.stringify(event, null, 2));
-  throw new Error('Error processing SQS event');
   // Iterate over each record in the SQS event
   for (const record of event.Records) {
     // Process each SQS message
@@ -28,9 +32,11 @@ exports.handler = async (event) => {
 
 // Example function to process the message
 async function processMessage(message) {
-  // Implement your message processing logic here
-  // For example, saving data to a database, calling an external API, etc.
-  console.log('Message:', message);
-  // Simulating processing delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  return client.messages
+  .create({
+    body: message,
+    to: '+918149891546', // Text your number
+    from: '+918149891546', // From a valid Twilio number
+  })
+  .then((message) => console.log(message.sid));
 }
