@@ -42,7 +42,6 @@ functions:
               - MyQueue
               - Arn
           batchSize: 10
-          maximumBatchingWindow: 0
     environment:
       SQS_URL:
         Ref: MyQueue
