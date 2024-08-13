@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
   console.log('Received SQS event:', JSON.stringify(event, null, 2));
-
+  throw new Error('Error processing SQS event');
   // Iterate over each record in the SQS event
   for (const record of event.Records) {
     // Process each SQS message
