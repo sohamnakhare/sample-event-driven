@@ -47,10 +47,10 @@ functions:
 
 resources:
   Resources:
-    MyS3Bucket:
-      Type: "AWS::S3::Bucket"
-      Properties:
-        BucketName: sample-event-driven-bucket
+    # MyS3Bucket:
+    #   Type: "AWS::S3::Bucket"
+    #   Properties:
+    #     BucketName: sample-event-driven-bucket
     MyQueue:
       Type: "AWS::SQS::Queue"
       Properties:
