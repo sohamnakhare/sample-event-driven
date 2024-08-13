@@ -32,19 +32,18 @@ functions:
     environment:
       SQS_URL:
         Ref: MyQueue
-
-  consumer:
-    handler: consumer.handler
-    events:
-      - sqs:
-          arn:
-            Fn::GetAtt:
-              - MyQueue
-              - Arn
-          batchSize: 10
-    environment:
-      SQS_URL:
-        Ref: MyQueue
+  # consumer:
+  #   handler: consumer.handler
+  #   events:
+  #     - sqs:
+  #         arn:
+  #           Fn::GetAtt:
+  #             - MyQueue
+  #             - Arn
+  #         batchSize: 10
+  #   environment:
+  #     SQS_URL:
+  #       Ref: MyQueue
 
 resources:
   Resources:
