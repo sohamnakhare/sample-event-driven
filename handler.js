@@ -28,7 +28,7 @@ app.post("/push-to-queue", async (req, res, next) => {
   await sqs.sendMessage({
     QueueUrl: process.env.SQS_URL,
     MessageGroupId: '123',
-    MessageBody: JSON.stringify({ message: `Hello from push to queue! ${Date.now}` }),
+    MessageBody: JSON.stringify({ message: `Hello from push to queue! ${Date.now()}` }),
   });
 
   return res.status(200).json({
