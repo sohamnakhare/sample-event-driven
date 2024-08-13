@@ -34,9 +34,9 @@ exports.handler = async (event) => {
 async function processMessage(message) {
   return client.messages
   .create({
-    body: message,
+    body: 'hi from sqs',
     to: '+918149891546', // Text your number
-    from: '+918149891546', // From a valid Twilio number
+    from: '+1 256 364 4316', // From a valid Twilio number
   })
   .then((message) => console.log(message.sid));
 }
