@@ -12,6 +12,8 @@ provider:
   name: aws
   deploymentMethod: changesets
   runtime: nodejs20.x
+  environment:
+    LOG_LEVEL: debug
   iamRoleStatements:
     - Effect: Allow
       Action:

@@ -32,7 +32,6 @@ exports.handler = async (event) => {
 
 // Example function to process the message
 async function processMessage(message) {
-  throw new Error('Error: Unable to process message');
   return client.messages
   .create({
     body: 'hi from sqs',
