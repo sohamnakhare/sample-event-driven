@@ -36,7 +36,7 @@ async function processMessage(message) {
   .create({
     body: 'hi from sqs',
     to: '+918149891546', // Text your number
-    from: '+1 256 364 4316', // From a valid Twilio number
+    from: '+12563644316', // From a valid Twilio number
   })
   .then((message) => console.log(message.sid))
   .catch(err => console.error(err));
