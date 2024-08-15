@@ -10,10 +10,9 @@ const AWS = require('aws-sdk');
 // Initialize the S3 client
 const s3 = new AWS.S3({
     region: 'us-east-1', // Specify your region
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.MY_AWS_SECRET_ACCESS_KEY,
 });
-
 
 app.get("/", (req, res, next) => {
   return res.status(200).json({
